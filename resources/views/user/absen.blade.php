@@ -17,98 +17,110 @@ $month_name = date("F", mktime(0, 0, 0, $month_num, 10));
         border: 0;
     }
 </style>
-<div class="card border border-1 shadow">
-    <div class="card-body">
-        <div class="row justify-content-center text-center">
-            <h2>{{ $hari }}, {{ $tanggal }}</h2>
-            <h5 class="d-block" id="waktu">00:00:00</h5>
-        </div>
-        <hr>
-        <form action="{{route('absen.store')}}" method="POST">
-            @csrf
-            <div class="row">
-                <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label">Nama</label>
-                    <input type="text" class="form-control border-bottom" id="formGroupExampleInput"
-                        value="{{ Auth::user()->name }}" readonly>
-                </div>
-                <div class="mb-3">
-                    <label for="project" class="form-label">Project</label>
-                    <select class="form-select border-bottom" id="project" name="project">
-                        <option value="">-- Pilih Project --</option>
-                        @foreach ($datas as $data)
-                        @foreach ($data->project as $item)
-                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                        @endforeach
-                        @endforeach
-                    </select>
-                </div>
-            </div>
+<div class="d-flex mb-4">
+    <div>
+        <img src="/images/undraw_profile.svg" width="65px" class="rounded-circle" alt="user photo">
     </div>
-</div>
-<div class="card border border-1 shadow mt-4" style="margin-bottom: 100px">
-    <div class="card-body">
-        <div class="d-grid gap-2 col-12 mx-auto">
-            {{-- @if ($keterangan === null)
-            <button class="btn btn-primary" type="submit" style="font-size: 25px;">
-                <i class="fas fa-angle-double-right text-white"></i> Absen Masuk
-            </button>
-            <button class="btn btn-success" type="button" style="font-size: 25px" disabled><i
-                    class="fas fa-angle-double-left text-white"></i> Absen Keluar </button>
-            <a class="btn btn-danger" style="font-size: 25px" onclick="this.href='/sakit/'+ document.getElementById('project').value"><i class="fas fa-ban text-white"></i>
-                Izin Sakit</a>
-            @elseif($keterangan->activity !== null)
-            <button class="btn btn-primary" type="submit" style="font-size: 25px" disabled>
-                <i class="fas fa-angle-double-right text-white"></i> Absen Masuk
-            </button>
-            <button class="btn btn-success" type="button" style="font-size: 25px" disabled><i
-                    class="fas fa-angle-double-left text-white"></i> Absen Keluar</button>
-            <button class="btn btn-danger" type="button" style="font-size: 25px" disabled><i
-                    class="fas fa-ban text-white"></i>
-                Izin Sakit</button>
-            @elseif($keterangan->activity === null)
-            <button class="btn btn-primary" type="submit" style="font-size: 25px" disabled>
-                <i class="fas fa-angle-double-right text-white"></i> Absen Masuk
-            </button>
-            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                style="font-size: 25px"><i class="fas fa-angle-double-left text-white"></i> Absen Keluar</button>
-            <button class="btn btn-danger" type="button" style="font-size: 25px" disabled><i
-                    class="fas fa-ban text-white"></i>
-                Izin Sakit</button>
-            @else
-            <button class="btn btn-primary" type="submit" style="font-size: 25px" disabled>
-                <i class="fas fa-angle-double-right text-white"></i> Absen Masuk
-            </button>
-            <button class="btn btn-success" type="button" style="font-size: 25px" disabled><i
-                    class="fas fa-angle-double-left text-white"></i> Absen Keluar</button>
-            <button class="btn btn-danger" type="button" style="font-size: 25px" disabled><i
-                    class="fas fa-ban text-white"></i>
-                Izin Sakit</button>
-            @endif --}}
-            @if ($keterangan and ($keterangan['activity'] === null))
-            <button class="btn btn-primary" type="submit" style="font-size: 25px" disabled>
-                <i class="fas fa-angle-double-right text-white"></i> Absen Masuk
-            </button>
-            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                style="font-size: 25px"><i class="fas fa-angle-double-left text-white"></i> Absen Keluar</button>
-            <button class="btn btn-danger" type="button" style="font-size: 25px" disabled><i
-                    class="fas fa-ban text-white"></i>
-                Izin Sakit</button>
-            @else
-            <button class="btn btn-primary" type="submit" style="font-size: 25px;">
-                <i class="fas fa-angle-double-right text-white"></i> Absen Masuk
-            </button>
-            <button class="btn btn-success" type="button" style="font-size: 25px" disabled><i
-                    class="fas fa-angle-double-left text-white"></i> Absen Keluar </button>
-            <a class="btn btn-danger" style="font-size: 25px"
-                onclick="this.href='/sakit/'+ document.getElementById('project').value"><i
-                    class="fas fa-ban text-white"></i>
-                Izin Sakit</a>
-            @endif
-        </div>
+    <div class="text-light me-auto mx-2 d-flex flex-column justify-content-center">
+        <h4 class="fw-300">Welcome!</h4>
+        <h6 class="fw-bold">{{ Auth::user()->name }}</h6>
     </div>
+    <div class="d-flex align-items-center">
+        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="h1 text-decoration-none p-2 rounded-circle bg-dark text-light fas fa-power-off"></a>
+    </div>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
     </form>
 </div>
+
+<div class="card border border-1 shadow mb-5" style="border-radius: 15px;">
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="col text-end">
+                <small>{{ $hari }}, {{ $tanggal }}</small>
+                <small class="d-block" id="waktu">00:00:00</small>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <form action="{{route('absen.store')}}" method="POST">
+                @csrf
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Nama</label>
+                        <input type="text" class="form-control border bg-light text-muted" style="border-radius:18px;" id="formGroupExampleInput"
+                            value="{{ Auth::user()->name }}" readonly>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-grid gap-2 col-12 mx-auto">
+    @if ($keterangan and ($keterangan['activity'] === null))
+        <button class="btn p-0 my-2" type="submit" disabled>
+            <div class="card d-flex flex-row align-items-center shadow">
+                <span class="fa fa-sign-in-alt fs-1 mx-3"></span>
+                <div class="card-body text-start" style="line-height: 5px;">
+                    <h6>Time In</h6>
+                    <small class="fw-300">Time in is blablabla</small>
+                </div>
+            </div>
+        </button>
+
+        <button class="btn p-0 my-2" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <div class="card d-flex flex-row align-items-center shadow">
+                <span class="fa fa-sign-out-alt fs-1 mx-3"></span>
+                <div class="card-body text-start" style="line-height: 5px;">
+                    <h6>Time Out</h6>
+                    <small class="fw-300">Time in is blablabla</small>
+                </div>
+            </div>
+        </button>
+
+        <button class="btn p-0 my-2" type="button" disabled>
+            <div class="card d-flex flex-row align-items-center shadow">
+                <span class="fa fa-ban fs-1 mx-3"></span>
+                <div class="card-body text-start" style="line-height: 5px;">
+                    <h6>Izin</h6>
+                    <small class="fw-300">Time in is blablabla</small>
+                </div>
+            </div>
+        </button>
+    @else
+            <button class="btn p-0 my-2" type="submit">
+                <div class="card d-flex flex-row align-items-center shadow">
+                    <span class="fa fa-sign-in-alt fs-1 mx-3"></span>
+                    <div class="card-body text-start" style="line-height: 5px;">
+                        <h6>Time In</h6>
+                        <small class="fw-300">Time in is blablabla</small>
+                    </div>
+                </div>
+            </button>
+    
+            <button class="btn p-0 my-2" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled>
+                <div class="card d-flex flex-row align-items-center shadow">
+                    <span class="fa fa-sign-out-alt fs-1 mx-3"></span>
+                    <div class="card-body text-start" style="line-height: 5px;">
+                        <h6>Time Out</h6>
+                        <small class="fw-300">Time in is blablabla</small>
+                    </div>
+                </div>
+            </button>
+    
+            <button class="btn p-0 my-2" type="button" onclick="this.href='/sakit/'+ document.getElementById('project').value">
+                <div class="card d-flex flex-row align-items-center shadow">
+                    <span class="fa fa-ban fs-1 mx-3"></span>
+                    <div class="card-body text-start" style="line-height: 5px;">
+                        <h6>Izin</h6>
+                        <small class="fw-300">Time in is blablabla</small>
+                    </div>
+                </div>
+            </button>
+    @endif
+</div>
+        </form>
+
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">

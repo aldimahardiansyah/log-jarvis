@@ -16,51 +16,51 @@ $control = App\Models\Control::where('id', 1)->first();
     }
 </style>
 
-<div class="card shadow px-2 py-4">
+<div class="d-flex mb-4">
+    <div>
+        <img src="/images/undraw_profile.svg" width="65px" class="rounded-circle" alt="user photo">
+    </div>
+    <div class="text-light me-auto mx-2 d-flex flex-column justify-content-center">
+        <h6 class="fw-bold">{{ Auth::user()->name }}</h6>
+        <h6 class="fw-300">Manager</h6>
+    </div>
+    <div class="d-flex align-items-center">
+        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="h1 text-decoration-none p-2 rounded-circle bg-dark text-light fas fa-power-off"></a>
+    </div>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
+</div>
+
+<div class="card shadow px-2 py-4 mb-4">
     <div class="row">
         <div class="col-md-4 col-sm-12">
-            <input id="from" type="text" class="form-control pilihan border-bottom" placeholder="Tanggal Awal"
+            <input id="from" type="text" class="form-control pilihan border-bottom" placeholder="Start Date"
                 onfocus="(this.type='date')" onblur="(this.type='text')">
         </div>
         <div class="col-md-4 col-sm-12">
-            <input id="to" type="text" class="form-control pilihan border-bottom" placeholder="Tanggal Akhir"
+            <input id="to" type="text" class="form-control pilihan border-bottom" placeholder="Last Date"
                 onfocus="(this.type='date')" onblur="(this.type='text')">
         </div>
         <div class="col-md-4 col-sm-12">
-            <select id="project" class="form-select pilihan border-bottom" aria-label="Default select example">
-                <option selected>-- Pilih Project --</option>
-                @foreach ($keterangan as $data)
-                @foreach ($data->project as $item)
-                <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                @endforeach
-                @endforeach
+            <select id="program" class="form-select pilihan border-bottom fw-300" aria-label="Default select example">
+                <option selected>-- Choose Study Program --</option>
             </select>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <select id="name_approv" class="form-select pilihan border-bottom" aria-label="Default select example">
-                <option value="Director">Director</option>
-                <option value="Head of Operation & Maintenance">Head of Operation & Maintenance</option>
-            </select>
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <input id="user_approv" type="text" class="form-control pilihan border-bottom" placeholder="Masukkan nama approver">
-        </div>
-    </div>
+    
     <div class="d-grid gap-2">
-        <a class="btn btn-success text-center mt-2"
+        <a class="btn btn-success text-center mt-2" style="border-radius: 18px;"
             onclick="this.href='/cpdf/'+ document.getElementById('from').value + '/' + document.getElementById('to').value + '/' + document.getElementById('project').value + '/' + document.getElementById('name_approv').value + '/' + document.getElementById('user_approv').value"
-            target="_blank"><i class="fas fa-print text-white"></i> Cetak</a>
+            target="_blank"><i class="fas fa-print text-white"></i> Print</a>
         @if ($control->kondisi === 1)
-        <button type="button" class="btn btn-warning text-center" data-bs-toggle="modal"
+        <button type="button" class="btn btn-warning text-center" data-bs-toggle="modal" style="border-radius: 18px;"
             data-bs-target="#staticBackdrop"><i class="fas fa-keyboard text-white"></i>
             Masukkan Data Lampau</button>
         @endif
     </div>
 </div>
 
-<h4 class="mt-4 fw-bold">Data Absensi</h4>
 <div class="card shadow" style="margin-bottom: 100px">
     {{-- <div class="card-header text-center">{{ __('Data Absen') }}</div> --}}
 <div class="card-body">

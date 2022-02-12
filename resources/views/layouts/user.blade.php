@@ -18,13 +18,25 @@
     <link rel="stylesheet" href="{{ asset('user/style.css') }}">
 
     <title>Jarvis - Portal Absen</title>
+    <style>
+        .navbar{
+            background-color: #e8ffbe; 
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+        }
+        .active{
+            background-color: #f3e28d;
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="p-0 navbar navbar-expand narbar-dark bg-white text-secondary fixed-bottom border-top border-2">
+    <nav class="p-0 navbar navbar-expand narbar-dark text-dark fixed-bottom">
         <ul class="navbar-nav nav-justified mx-auto" style="width: 600px;">
-            <li class="nav-item">
-                <a href="/" class="nav-link fw-bold text text-secondary">
+            <li class="nav-item active">
+                <a href="/" class="nav-link fw-bold text text-dark">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor"
                         class="bi bi-house" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -32,11 +44,11 @@
                         <path fill-rule="evenodd"
                             d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
                     </svg>
-                    <span class="small d-block">Beranda</span>
+                    <span class="small d-block fw-300">Home</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('absen.index') }}" class="nav-link fw-bold text-secondary">
+                <a href="{{ route('absen.index') }}" class="nav-link fw-bold text-dark">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor"
                         class="bi bi-plus-square" viewBox="0 0 16 16">
                         <path
@@ -44,11 +56,11 @@
                         <path
                             d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                     </svg>
-                    <span class="small d-block">Absen</span>
+                    <span class="small d-block fw-300">Absent</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('data_user.index')}}" class="nav-link fw-bold text-secondary">
+                <a href="{{route('data_user.index')}}" class="nav-link fw-bold text-dark">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor"
                         class="bi bi-journals" viewBox="0 0 16 16">
                         <path
@@ -56,17 +68,17 @@
                         <path
                             d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" />
                     </svg>
-                    <span class="small d-block">Riwayat</span>
+                    <span class="small d-block fw-300">History</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('profil.index') }}" class="nav-link fw-bold text-secondary">
+                <a href="{{ route('profil.index') }}" class="nav-link fw-bold text-dark">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor"
                         class="bi bi-person" viewBox="0 0 16 16">
                         <path
                             d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                     </svg>
-                    <span class="small d-block">Akun</span>
+                    <span class="small d-block fw-300">Account</span>
                 </a>
             </li>
         </ul>
