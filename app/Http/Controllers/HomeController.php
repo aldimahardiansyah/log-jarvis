@@ -53,7 +53,7 @@ class HomeController extends Controller
             $datas = Data::where('user_id', $user)->whereMonth('date_in', $month_num)->orderBy('date_in', 'desc')->get();
             // $datas = $user->datas;
             // dd($datas);
-            return view('user.index', compact('datas'));
+            return view('user.index', ['datas'=>$datas, 'title' => 'Home']);
         }
     }
     

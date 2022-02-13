@@ -17,7 +17,7 @@
 
     <link rel="stylesheet" href="{{ asset('user/style.css') }}">
 
-    <title>Jarvis - Portal Absen</title>
+    <title>Durian Traveler - Portal Absen</title>
     <style>
         .navbar{
             background-color: #e8ffbe; 
@@ -35,7 +35,7 @@
 <body>
     <nav class="p-0 navbar navbar-expand narbar-dark text-dark fixed-bottom">
         <ul class="navbar-nav nav-justified mx-auto" style="width: 600px;">
-            <li class="nav-item active">
+            <li class="nav-item {{ ($title=='Home')?'active':'' }}">
                 <a href="/" class="nav-link fw-bold text text-dark">
                     
                     <svg fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 32 32" width="1.5em" height="1.5em">
@@ -44,13 +44,13 @@
                     <span class="small d-block fw-300">Home</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ ($title=='Input Absent')?'active':'' }}">
                 <a href="{{ route('absen.index') }}" class="nav-link fw-bold text-dark">
                     <span class="far fa-edit" style="font-size:1.5em;"></span>
                     <span class="small d-block fw-300">Absent</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ ($title=='History')?'active':'' }}">
                 <a href="{{route('data_user.index')}}" class="nav-link fw-bold text-dark">
                     <svg width="1.5em" height="1.5em" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <rect width="30" height="30" fill="url(#pattern0)"/>
@@ -65,7 +65,7 @@
                     <span class="small d-block fw-300">History</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ ($title=='Profile')?'active':'' }}">
                 <a href="{{ route('profil.index') }}" class="nav-link fw-bold text-dark">
                     <span class="far fa-user" style="font-size:1.5em;"></span>
                     <span class="small d-block fw-300">Account</span>

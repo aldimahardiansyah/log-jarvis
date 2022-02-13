@@ -50,7 +50,8 @@ class AbsenController extends Controller
         
         return view('user.absen', [
             'datas' => $datas,
-            'keterangan' => $keterangan
+            'keterangan' => $keterangan,
+            'title' => 'Input Absent'
         ]);
     }
 

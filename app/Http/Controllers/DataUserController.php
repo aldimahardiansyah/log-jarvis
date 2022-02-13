@@ -42,6 +42,7 @@ class DataUserController extends Controller
         return view('user.data', [
             'datas' => $datas,
             'keterangan' => $keterangan,
+            'title' => 'History'
         ]);
     }
 
