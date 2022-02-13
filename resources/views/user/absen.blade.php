@@ -22,8 +22,8 @@ $month_name = date("F", mktime(0, 0, 0, $month_num, 10));
         <img src="/images/undraw_profile.svg" width="65px" class="rounded-circle" alt="user photo">
     </div>
     <div class="text-light me-auto mx-2 d-flex flex-column justify-content-center">
-        <h4 class="fw-300">Welcome!</h4>
         <h6 class="fw-bold">{{ Auth::user()->name }}</h6>
+        <h6 class="fw-300">Manager</h6>
     </div>
     <div class="d-flex align-items-center">
         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="h1 text-decoration-none p-2 rounded-circle bg-dark text-light fas fa-power-off"></a>
