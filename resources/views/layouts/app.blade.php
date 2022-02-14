@@ -120,7 +120,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Jarvis - Portal Absen</title>
+    <title>Durian Traveller - Portal Absen</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
